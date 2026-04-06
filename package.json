@@ -1,0 +1,18 @@
+{
+  "name": "lodonuatsuortiz-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Lodonu Atsu Ortiz",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "dev": "echo 'Dev server running'"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Lodonu Atsu Ortiz",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
