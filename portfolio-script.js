@@ -309,3 +309,185 @@ if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobil
 } else {
     // Copy on desktop click (already handled above)
 }
+
+// ========== TRANQUILITY CHATBOT ==========
+class TranquilityChatbot {
+    constructor() {
+        this.knowledgeBase = {
+            name: 'Lodonu Atsu Ortiz',
+            greetings: ['hello', 'hi', 'hey', 'greetings', 'how are you', 'what\'s up'],
+            education: {
+                current: 'Accra Technical University - B.Tech in Applied Informatics (Level 200)',
+                previous: 'Keta Senior High School - General Science',
+                trigger: ['education', 'school', 'university', 'degree', 'study', 'studies']
+            },
+            skills: {
+                programming: ['C Programming', 'HTML', 'CSS', 'JavaScript', 'C++', 'SQL'],
+                design: ['Graphic Design', 'UI/UX Design', 'Branding'],
+                specializations: ['Artificial Intelligence', 'Problem Solving', 'Microsoft Office'],
+                trigger: ['skills', 'expertise', 'proficiency', 'ability', 'programming', 'design']
+            },
+            experience: {
+                agentcon: 'AgentCon Volunteer (2025) - Event Coordinator & Attendee Support',
+                telecel: 'Customer Service Representative (2025) - Telecel Ghana',
+                istsa: 'Public Relations Officer (Current) - Information Systems & Technology Student\'s Association',
+                wicys: 'Public Relations Officer (Current) - Women in Cybersecurity (WiCyS) ATU Chapter',
+                tutor: 'Programming Tutor (Ongoing) - C Programming Language',
+                trigger: ['experience', 'work', 'job', 'position', 'role', 'volunteered', 'volunteer']
+            },
+            about: {
+                profession: 'Aspiring Software Engineer, Graphic Designer, and AI Enthusiast',
+                passion: 'Technology innovation and creating impactful solutions',
+                role: 'Public Relations Officer for ISTSA and WiCyS ATU Chapter',
+                tutor: 'C Programming Tutor',
+                trigger: ['about', 'who', 'yourself', 'what do you do', 'profession', 'career']
+            }
+        };
+
+        this.chatbox = document.getElementById('chatbot-messages');
+        this.input = document.getElementById('chatbot-input');
+        this.sendBtn = document.getElementById('chatbot-send');
+        this.toggleBtn = document.getElementById('chatbot-toggle');
+        this.container = document.querySelector('.chatbot-container');
+        this.hasOpenedBefore = false;
+
+        this.initializeEventListeners();
+    }
+
+    initializeEventListeners() {
+        this.sendBtn.addEventListener('click', () => this.handleUserMessage());
+        this.input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.handleUserMessage();
+        });
+        
+        // Toggle chatbot on header click
+        const chatbotHeader = document.querySelector('.chatbot-toggle-btn');
+        chatbotHeader.addEventListener('click', () => this.toggleChatbot());
+        
+        this.toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleChatbot();
+        });
+    }
+
+    toggleChatbot() {
+        this.container.classList.toggle('minimized');
+        
+        if (!this.container.classList.contains('minimized')) {
+            // Expanded - show welcome message if first time opened
+            if (!this.hasOpenedBefore) {
+                this.addWelcomeMessage();
+                this.hasOpenedBefore = true;
+            }
+            // Focus input when opened
+            setTimeout(() => this.input.focus(), 300);
+        }
+    }
+
+    addWelcomeMessage() {
+        setTimeout(() => {
+            this.displayMessage('Welcome! I\'m Tranquility, an AI assistant here to answer questions about Lodonu Atsu Ortiz. Feel free to ask about education, experience, skills, or anything else about Lodonu!', 'bot');
+        }, 500);
+    }
+
+    handleUserMessage() {
+        const userMessage = this.input.value.trim();
+        if (!userMessage) return;
+
+        this.displayMessage(userMessage, 'user');
+        this.input.value = '';
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        // Simulate typing with a longer delay for natural feel
+        setTimeout(() => {
+            this.removeTypingIndicator();
+            const botResponse = this.generateResponse(userMessage);
+            this.displayMessage(botResponse, 'bot');
+        }, 800);
+    }
+
+    showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chatbot-message bot-message typing-indicator';
+        typingDiv.id = 'typing-indicator';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+        contentDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        
+        typingDiv.appendChild(contentDiv);
+        this.chatbox.appendChild(typingDiv);
+        this.chatbox.scrollTop = this.chatbox.scrollHeight;
+    }
+
+    removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+
+    generateResponse(userMessage) {
+        const message = userMessage.toLowerCase();
+
+        // Greeting responses
+        if (this.knowledgeBase.greetings.some(greeting => message.includes(greeting))) {
+            return 'Hello! I\'m Tranquility. I\'m here to answer questions about Lodonu Atsu Ortiz. What would you like to know?';
+        }
+
+        // Education
+        if (this.knowledgeBase.education.trigger.some(word => message.includes(word))) {
+            return `📚 Education:\n\n${this.knowledgeBase.education.current}\n\nPrevious education: ${this.knowledgeBase.education.previous}`;
+        }
+
+        // Skills
+        if (this.knowledgeBase.skills.trigger.some(word => message.includes(word))) {
+            return `💻 Skills & Expertise:\n\nProgramming: ${this.knowledgeBase.skills.programming.join(', ')}\n\nDesign: ${this.knowledgeBase.skills.design.join(', ')}\n\nSpecializations: ${this.knowledgeBase.skills.specializations.join(', ')}`;
+        }
+
+        // Experience
+        if (this.knowledgeBase.experience.trigger.some(word => message.includes(word))) {
+            return `💼 Experience & Involvement:\n\n${this.knowledgeBase.experience.agentcon}\n\n${this.knowledgeBase.experience.telecel}\n\n${this.knowledgeBase.experience.istsa}\n\n${this.knowledgeBase.experience.wicys}\n\n${this.knowledgeBase.experience.tutor}`;
+        }
+
+        // About/Who
+        if (this.knowledgeBase.about.trigger.some(word => message.includes(word))) {
+            return `👤 About Lodonu:\n\nProfession: ${this.knowledgeBase.about.profession}\n\nCurrent Role: ${this.knowledgeBase.about.role}\n\nPassion: ${this.knowledgeBase.about.passion}\n\nAlso serves as a ${this.knowledgeBase.about.tutor}`;
+        }
+
+        // Contact info
+        if (message.includes('contact') || message.includes('email') || message.includes('phone')) {
+            return '📧 Contact Information:\n\nEmail: latsuortiz@gmail.com\nPhone: +233 206 047 722\nLocation: Accra, Ghana\n\nYou can also find Lodonu on LinkedIn and Instagram!';
+        }
+
+        // Name
+        if (message.includes('name') || message.includes('you are') || message.includes('who are you')) {
+            return `I'm Tranquility, an AI assistant. I'm here to help answer questions about Lodonu Atsu Ortiz - his education, career, experience, and skills.`;
+        }
+
+        // Default response for out-of-scope questions
+        return `I'm only permitted to answer questions about Lodonu Atsu Ortiz, his education, career, experience, and skills. Please feel free to ask me about those topics! 😊`;
+    }
+
+    displayMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chatbot-message ${sender}-message`;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+        contentDiv.textContent = message;
+
+        messageDiv.appendChild(contentDiv);
+        this.chatbox.appendChild(messageDiv);
+
+        // Scroll to bottom
+        this.chatbox.scrollTop = this.chatbox.scrollHeight;
+    }
+}
+
+// Initialize chatbot when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new TranquilityChatbot();
+});
