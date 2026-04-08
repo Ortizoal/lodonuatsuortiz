@@ -251,8 +251,8 @@ function createScrollToTopButton() {
     button.innerHTML = '↑';
     button.style.cssText = `
         position: fixed;
-        bottom: 30px;
-        right: 30px;
+        bottom: 5rem;
+        right: 1rem;
         width: 50px;
         height: 50px;
         background: linear-gradient(135deg, #0066cc, #00a8ff);
@@ -491,3 +491,17 @@ class TranquilityChatbot {
 document.addEventListener('DOMContentLoaded', () => {
     new TranquilityChatbot();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
