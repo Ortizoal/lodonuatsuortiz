@@ -294,7 +294,7 @@ createScrollToTopButton();
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Welcome to Lodonu Atsu Ortiz Portfolio!');
+    console.log('Welcome to Ortiz Atsu Lodonu Portfolio!');
     
     // Add animation delay to cards
     const cards = document.querySelectorAll('.skill-category, .experience-card, .highlight-card');
@@ -314,7 +314,7 @@ if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobil
 class TranquilityChatbot {
     constructor() {
         this.knowledgeBase = {
-            name: 'Lodonu Atsu Ortiz',
+            name: 'Ortiz',
             greetings: ['hello', 'hi', 'hey', 'greetings', 'how are you', 'what\'s up'],
             education: {
                 current: 'Accra Technical University - B.Tech in Applied Informatics (Level 200)',
@@ -331,14 +331,13 @@ class TranquilityChatbot {
                 agentcon: 'AgentCon Volunteer (2025) - Event Coordinator & Attendee Support',
                 telecel: 'Customer Service Representative (2025) - Telecel Ghana',
                 istsa: 'Public Relations Officer (Current) - Information Systems & Technology Student\'s Association',
-                wicys: 'Public Relations Officer (Current) - Women in Cybersecurity (WiCyS) ATU Chapter',
                 tutor: 'Programming Tutor (Ongoing) - C Programming Language',
                 trigger: ['experience', 'work', 'job', 'position', 'role', 'volunteered', 'volunteer']
             },
             about: {
                 profession: 'Aspiring Software Engineer, Graphic Designer, and AI Enthusiast',
                 passion: 'Technology innovation and creating impactful solutions',
-                role: 'Public Relations Officer for ISTSA and WiCyS ATU Chapter',
+                role: 'Public Relations Officer for Information Systems & Technology Student\'s Association',
                 tutor: 'C Programming Tutor',
                 trigger: ['about', 'who', 'yourself', 'what do you do', 'profession', 'career']
             }
@@ -386,7 +385,7 @@ class TranquilityChatbot {
 
     addWelcomeMessage() {
         setTimeout(() => {
-            this.displayMessage('Welcome! I\'m Tranquility, an AI assistant here to answer questions about Lodonu Atsu Ortiz. Feel free to ask about education, experience, skills, or anything else about Lodonu!', 'bot');
+            this.displayMessage('Welcome! I\'m Tranquility, an AI assistant here to answer questions about Ortiz. Feel free to ask about education, experience, skills, or anything else about Ortiz!', 'bot');
         }, 500);
     }
 
@@ -434,7 +433,7 @@ class TranquilityChatbot {
 
         // Greeting responses
         if (this.knowledgeBase.greetings.some(greeting => message.includes(greeting))) {
-            return 'Hello! I\'m Tranquility. I\'m here to answer questions about Lodonu Atsu Ortiz. What would you like to know?';
+            return 'Hello! I\'m Tranquility. I\'m here to answer questions about Ortiz. What would you like to know?';
         }
 
         // Education
@@ -459,16 +458,16 @@ class TranquilityChatbot {
 
         // Contact info
         if (message.includes('contact') || message.includes('email') || message.includes('phone')) {
-            return '📧 Contact Information:\n\nEmail: latsuortiz@gmail.com\nPhone: +233 206 047 722\nLocation: Accra, Ghana\n\nYou can also find Lodonu on LinkedIn and Instagram!';
+            return '📧 Contact Information:\n\nEmail: latsuortiz@gmail.com\nPhone: +233 206 047 722\nLocation: Accra, Ghana\n\nYou can also find Ortiz on LinkedIn and Instagram!';
         }
 
         // Name
         if (message.includes('name') || message.includes('you are') || message.includes('who are you')) {
-            return `I'm Tranquility, an AI assistant. I'm here to help answer questions about Lodonu Atsu Ortiz - his education, career, experience, and skills.`;
+            return `I'm Tranquility, an AI assistant. I'm here to help answer questions about Ortiz - his education, career, experience, and skills.`;
         }
 
         // Default response for out-of-scope questions
-        return `I'm only permitted to answer questions about Lodonu Atsu Ortiz, his education, career, experience, and skills. Please feel free to ask me about those topics! 😊`;
+        return `I'm only permitted to answer questions Ortiz, his education, career, experience, and skills. Please feel free to ask me about those topics! 😊`;
     }
 
     displayMessage(message, sender) {
