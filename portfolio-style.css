@@ -276,7 +276,31 @@ section {
     padding: 80px 20px;
 }
 
-body:not(.content-revealed) section[data-reveal] {
+body.view-home section[data-reveal] {
+    display: none;
+}
+
+body.view-learn-more section[data-reveal] {
+    display: block;
+}
+
+body.view-contact-only section[data-reveal]:not(#contact) {
+    display: none;
+}
+
+body.view-about-only section[data-reveal]:not(#about) {
+    display: none;
+}
+
+body.view-skills-only section[data-reveal]:not(#skills) {
+    display: none;
+}
+
+body.view-experience-only section[data-reveal]:not(#experience) {
+    display: none;
+}
+
+body.view-education-only section[data-reveal]:not(#education) {
     display: none;
 }
 

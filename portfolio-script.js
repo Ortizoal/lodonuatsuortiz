@@ -41,33 +41,80 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Smooth scroll for anchor links
+function setView(viewClass, targetId = null) {
+    const views = [
+        'view-home',
+        'view-learn-more',
+        'view-contact-only',
+        'view-about-only',
+        'view-skills-only',
+        'view-experience-only',
+        'view-education-only'
+    ];
+
+    document.body.classList.remove(...views);
+    if (viewClass) {
+        document.body.classList.add(viewClass);
+    }
+
+    if (targetId) {
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Smooth scroll and section switching for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            if (target.hasAttribute('data-reveal')) {
-                document.body.classList.add('content-revealed');
-            }
-            target.scrollIntoView({ behavior: 'smooth' });
+        const targetId = this.getAttribute('href').slice(1);
+
+        if (targetId === 'about') {
+            setView('view-about-only', 'about');
+            return;
+        }
+        if (targetId === 'skills') {
+            setView('view-skills-only', 'skills');
+            return;
+        }
+        if (targetId === 'experience') {
+            setView('view-experience-only', 'experience');
+            return;
+        }
+        if (targetId === 'education') {
+            setView('view-education-only', 'education');
+            return;
+        }
+        if (targetId === 'contact') {
+            setView('view-contact-only', 'contact');
+            return;
+        }
+        if (targetId === 'home') {
+            setView('view-home');
+            return;
         }
     });
 });
 
-// Reveal content when hero buttons are used
+// Hero buttons control the entry view
 const heroLearnMore = document.querySelector('.hero .btn-secondary');
 const heroGetInTouch = document.querySelector('.hero .btn-primary');
 
 if (heroLearnMore) {
-    heroLearnMore.addEventListener('click', () => {
-        document.body.classList.add('content-revealed');
+    heroLearnMore.addEventListener('click', (e) => {
+        e.preventDefault();
+        setView('view-learn-more', 'about');
     });
 }
 
 if (heroGetInTouch) {
-    heroGetInTouch.addEventListener('click', () => {
-        document.body.classList.add('content-revealed');
+    heroGetInTouch.addEventListener('click', (e) => {
+        e.preventDefault();
+        setView('view-contact-only', 'contact');
     });
 }
 
