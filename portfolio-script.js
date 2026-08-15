@@ -4,7 +4,9 @@ const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger) {
     hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+        if (navMenu) {
+            navMenu.classList.toggle('active');
+        }
     });
 }
 
@@ -12,7 +14,9 @@ if (hamburger) {
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+        if (navMenu) {
+            navMenu.classList.remove('active');
+        }
     });
 });
 
@@ -354,19 +358,27 @@ class TranquilityChatbot {
     }
 
     initializeEventListeners() {
-        this.sendBtn.addEventListener('click', () => this.handleUserMessage());
-        this.input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.handleUserMessage();
-        });
+        if (this.sendBtn) {
+            this.sendBtn.addEventListener('click', () => this.handleUserMessage());
+        }
+        if (this.input) {
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.handleUserMessage();
+            });
+        }
         
         // Toggle chatbot on header click
         const chatbotHeader = document.querySelector('.chatbot-toggle-btn');
-        chatbotHeader.addEventListener('click', () => this.toggleChatbot());
+        if (chatbotHeader) {
+            chatbotHeader.addEventListener('click', () => this.toggleChatbot());
+        }
         
-        this.toggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.toggleChatbot();
-        });
+        if (this.toggleBtn) {
+            this.toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleChatbot();
+            });
+        }
     }
 
     toggleChatbot() {
@@ -379,7 +391,9 @@ class TranquilityChatbot {
                 this.hasOpenedBefore = true;
             }
             // Focus input when opened
-            setTimeout(() => this.input.focus(), 300);
+            if (this.input) {
+                setTimeout(() => this.input.focus(), 300);
+            }
         }
     }
 
@@ -448,7 +462,7 @@ class TranquilityChatbot {
 
         // Experience
         if (this.knowledgeBase.experience.trigger.some(word => message.includes(word))) {
-            return `💼 Experience & Involvement:\n\n${this.knowledgeBase.experience.agentcon}\n\n${this.knowledgeBase.experience.telecel}\n\n${this.knowledgeBase.experience.istsa}\n\n${this.knowledgeBase.experience.wicys}\n\n${this.knowledgeBase.experience.tutor}`;
+            return `💼 Experience & Involvement:\n\n${this.knowledgeBase.experience.agentcon}\n\n${this.knowledgeBase.experience.telecel}\n\n${this.knowledgeBase.experience.istsa}\n\n${this.knowledgeBase.experience.tutor}`;
         }
 
         // About/Who
