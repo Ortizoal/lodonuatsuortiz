@@ -1114,6 +1114,24 @@ body:not(.content-revealed) section[data-reveal] {
     justify-content: center;
 }
 
+.chatbot-container.minimized .chatbot-title-text,
+.chatbot-container.minimized .chatbot-close {
+    display: none;
+}
+
+.chatbot-container.minimized .chatbot-robot-avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-container.minimized .chatbot-icon {
+    font-size: 1.8rem;
+    padding-left: 0 !important;
+}
+
 /* Expanded state */
 .chatbot-container:not(.minimized) {
     max-height: 680px;
