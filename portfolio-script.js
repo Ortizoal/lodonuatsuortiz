@@ -370,6 +370,7 @@ class TranquilityChatbot {
         this.input = document.getElementById('chatbot-input');
         this.sendBtn = document.getElementById('chatbot-send');
         this.toggleBtn = document.getElementById('chatbot-toggle');
+        this.closeBtn = document.querySelector('.chatbot-close');
         this.container = document.querySelector('.chatbot-container');
         this.hasOpenedBefore = false;
 
@@ -398,6 +399,13 @@ class TranquilityChatbot {
                 this.toggleChatbot();
             });
         }
+
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.closeChatbot();
+            });
+        }
     }
 
     toggleChatbot() {
@@ -413,6 +421,12 @@ class TranquilityChatbot {
             if (this.input) {
                 setTimeout(() => this.input.focus(), 300);
             }
+        }
+    }
+
+    closeChatbot() {
+        if (this.container) {
+            this.container.classList.add('minimized');
         }
     }
 

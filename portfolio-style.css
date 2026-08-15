@@ -1137,19 +1137,43 @@ body:not(.content-revealed) section[data-reveal] {
     gap: 10px;
 }
 
-.chatbot-title-area h3 {
+.chatbot-title-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.chatbot-title-text h3 {
     margin: 0;
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.chatbot-title-text span {
+    font-size: 0.78rem;
+    opacity: 0.9;
+}
+
+.chatbot-close {
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .chatbot-icon {
     font-size: 1.45rem;
 }
 
-
-
-.chatbot-toggle:hover {
+.chatbot-close:hover {
     background: rgba(255,255,255,0.2);
     transform: rotate(90deg);
 }
