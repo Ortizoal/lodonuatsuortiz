@@ -47,10 +47,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            if (target.hasAttribute('data-reveal')) {
+                document.body.classList.add('content-revealed');
+            }
             target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
+
+// Reveal content when hero buttons are used
+const heroLearnMore = document.querySelector('.hero .btn-secondary');
+const heroGetInTouch = document.querySelector('.hero .btn-primary');
+
+if (heroLearnMore) {
+    heroLearnMore.addEventListener('click', () => {
+        document.body.classList.add('content-revealed');
+    });
+}
+
+if (heroGetInTouch) {
+    heroGetInTouch.addEventListener('click', () => {
+        document.body.classList.add('content-revealed');
+    });
+}
 
 // Contact Form Handler
 const contactForm = document.getElementById('contactForm');
