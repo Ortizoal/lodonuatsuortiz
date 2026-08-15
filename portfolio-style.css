@@ -1063,8 +1063,23 @@ body.view-education-only section[data-reveal]:not(#education) {
     }
 
     .nav-link {
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.05rem 1.25rem;
+        border-bottom: none;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        color: rgba(255, 255, 255, 0.96);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        padding: 1.25rem 0;
+    }
+
+    .nav-link {
+        font-size: 1.05rem;
+        padding: 1rem 1.25rem;
     }
 }
 
