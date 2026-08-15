@@ -128,8 +128,8 @@ body {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--primary-light) 0%, #f0f8ff 100%);
-    padding: 100px 20px;
-    min-height: 100vh;
+    padding: 88px 20px 72px;
+    min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
 }
@@ -175,7 +175,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 .btn {
@@ -212,31 +212,6 @@ body {
     background: var(--primary-color);
     color: white;
     transform: translateY(-3px);
-}
-
-.social-links-hero {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.social-links-hero a {
-    width: 50px;
-    height: 50px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    transition: var(--transition);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.social-links-hero a:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-5px);
 }
 
 .hero-visual {
@@ -857,6 +832,30 @@ section {
     text-align: center;
 }
 
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-social-links a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transition: var(--transition);
+}
+
+.footer-social-links a:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-3px);
+}
+
 .footer p {
     margin-bottom: 0.5rem;
 }
@@ -981,16 +980,6 @@ section {
         padding: 1.5rem;
     }
 
-    .social-links-hero {
-        gap: 1rem;
-    }
-
-    .social-links-hero a {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-
     .competency-tags {
         gap: 0.75rem;
     }
@@ -1010,6 +999,15 @@ section {
 
     .project-overlay h3 {
         font-size: 1.2rem;
+    }
+
+    .footer-social-links {
+        gap: 0.75rem;
+    }
+
+    .footer-social-links a {
+        width: 38px;
+        height: 38px;
     }
 }  
 
