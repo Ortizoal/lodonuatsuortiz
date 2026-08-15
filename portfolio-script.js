@@ -49,7 +49,8 @@ function setView(viewClass, targetId = null) {
         'view-about-only',
         'view-skills-only',
         'view-experience-only',
-        'view-education-only'
+        'view-education-only',
+        'view-projects-only'
     ];
 
     document.body.classList.remove(...views);
@@ -87,6 +88,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
         if (targetId === 'education') {
             setView('view-education-only', 'education');
+            return;
+        }
+        if (targetId === 'projects') {
+            setView('view-projects-only', 'projects');
             return;
         }
         if (targetId === 'contact') {
@@ -405,9 +410,10 @@ class TranquilityChatbot {
                 trigger: ['experience', 'work', 'job', 'position', 'role', 'volunteered', 'volunteer']
             },
             about: {
-                profession: 'Aspiring Software Engineer, Graphic Designer, and AI Enthusiast',
-                passion: 'Technology innovation and creating impactful solutions',
+                profession: 'Aspiring Software Engineer, Graphic Designer, CEO of NOXVECTOR, and AI Enthusiast',
+                passion: 'Technology innovation, visual storytelling, and creating impactful solutions',
                 role: 'Public Relations Officer for Information Systems & Technology Student\'s Association',
+                company: 'NOXVECTOR - Graphic Design and Web Design Services',
                 tutor: 'C Programming Tutor',
                 trigger: ['about', 'who', 'yourself', 'what do you do', 'profession', 'career']
             }
@@ -547,7 +553,7 @@ class TranquilityChatbot {
 
         // About/Who
         if (this.knowledgeBase.about.trigger.some(word => message.includes(word))) {
-            return `👤 About Lodonu:\n\nProfession: ${this.knowledgeBase.about.profession}\n\nCurrent Role: ${this.knowledgeBase.about.role}\n\nPassion: ${this.knowledgeBase.about.passion}\n\nAlso serves as a ${this.knowledgeBase.about.tutor}`;
+            return `👤 About Lodonu:\n\nProfession: ${this.knowledgeBase.about.profession}\n\nCurrent Role: ${this.knowledgeBase.about.role}\n\nCompany: ${this.knowledgeBase.about.company}\n\nPassion: ${this.knowledgeBase.about.passion}\n\nAlso serves as a ${this.knowledgeBase.about.tutor}`;
         }
 
         // Contact info
@@ -561,7 +567,7 @@ class TranquilityChatbot {
         }
 
         // Default response for out-of-scope questions
-        return `I'm only permitted to answer questions Ortiz, his education, career, experience, and skills. Please feel free to ask me about those topics! 😊`;
+        return `I'm only permitted to answer questions about Ortiz, his education, career, experience, and skills. Please feel free to ask me about those topics! 😊`;
     }
 
     displayMessage(message, sender) {

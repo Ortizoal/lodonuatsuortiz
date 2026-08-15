@@ -304,6 +304,10 @@ body.view-education-only section[data-reveal]:not(#education) {
     display: none;
 }
 
+body.view-projects-only section[data-reveal]:not(#projects) {
+    display: none;
+}
+
 .section-title {
     font-size: 2.5rem;
     text-align: center;
@@ -618,15 +622,54 @@ body.view-education-only section[data-reveal]:not(#education) {
 
 /* Projects Section */
 .projects {
-    background: var(--background-light);
-    padding: 80px 20px;
+    background:
+        radial-gradient(circle at top left, rgba(0, 102, 204, 0.08), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+    padding: 90px 20px;
+}
+
+.portfolio-brand {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.portfolio-kicker {
+    display: inline-block;
+    margin-bottom: 0.85rem;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: rgba(0, 102, 204, 0.1);
+    color: var(--primary-color);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
 }
 
 .section-subtitle {
     text-align: center;
     color: var(--text-light);
     font-size: 1.1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-services {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.service-pill {
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: white;
+    color: var(--primary-color);
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 102, 204, 0.12);
 }
 
 .projects-grid {
@@ -638,21 +681,22 @@ body.view-education-only section[data-reveal]:not(#education) {
 
 .project-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 18px;
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    border: 1px solid rgba(0, 102, 204, 0.08);
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
     box-shadow: var(--shadow-lg);
 }
 
 .project-image {
     position: relative;
     overflow: hidden;
-    height: 250px;
+    height: 280px;
     background: linear-gradient(135deg, var(--primary-light), #f0f8ff);
 }
 
@@ -673,7 +717,7 @@ body.view-education-only section[data-reveal]:not(#education) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 102, 204, 0.85), rgba(0, 168, 255, 0.85));
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.88), rgba(0, 102, 204, 0.78));
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -682,6 +726,7 @@ body.view-education-only section[data-reveal]:not(#education) {
     opacity: 0;
     transition: var(--transition);
     text-align: center;
+    padding: 1.25rem;
 }
 
 .project-card:hover .project-overlay {
@@ -689,7 +734,7 @@ body.view-education-only section[data-reveal]:not(#education) {
 }
 
 .project-overlay h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
 }
 
@@ -698,7 +743,7 @@ body.view-education-only section[data-reveal]:not(#education) {
 }
 
 .project-info {
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1.7rem;
 }
 
 .project-info h3 {
@@ -710,6 +755,7 @@ body.view-education-only section[data-reveal]:not(#education) {
 .project-info p {
     color: var(--text-light);
     font-size: 0.95rem;
+    line-height: 1.7;
 }
 
 /* Contact Section */
@@ -966,6 +1012,14 @@ body.view-education-only section[data-reveal]:not(#education) {
     .project-image {
         height: 200px;
     }
+
+    .portfolio-services {
+        gap: 0.5rem;
+    }
+
+    .service-pill {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1027,6 +1081,10 @@ body.view-education-only section[data-reveal]:not(#education) {
 
     .project-overlay h3 {
         font-size: 1.2rem;
+    }
+
+    .portfolio-kicker {
+        letter-spacing: 0.12em;
     }
 
     .footer-social-links {
