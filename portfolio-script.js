@@ -405,7 +405,7 @@ class TranquilityChatbot {
                 trigger: ['experience', 'work', 'job', 'position', 'role', 'volunteered', 'volunteer']
             },
             about: {
-                profession: 'Aspiring Software Engineer, Graphic Designer, and AI Enthusiast',
+                profession: 'Web Developer, Aspiring Software Engineer, Graphic Designer, and AI Enthusiast',
                 passion: 'Technology innovation and creating impactful solutions',
                 role: 'Public Relations Officer for Information Systems & Technology Student\'s Association',
                 tutor: 'C Programming Tutor',
@@ -525,6 +525,12 @@ class TranquilityChatbot {
     generateResponse(userMessage) {
         const message = userMessage.toLowerCase();
 
+        // CV generation
+        if (/(create|generate|make|build|download|show).*(cv|resume)|\b(cv|resume)\b/.test(message)) {
+            this.displayCvAction();
+            return 'I can create a professional CV from the information on this website. Use the button below to open a print-ready version, then choose “Save as PDF” or print it.';
+        }
+
         // Greeting responses
         if (this.knowledgeBase.greetings.some(greeting => message.includes(greeting))) {
             return 'Hello! I\'m Tranquility. I\'m here to answer questions about Ortiz. What would you like to know?';
@@ -577,6 +583,36 @@ class TranquilityChatbot {
 
         // Scroll to bottom
         this.chatbox.scrollTop = this.chatbox.scrollHeight;
+    }
+
+    displayCvAction() {
+        const actionDiv = document.createElement('div');
+        actionDiv.className = 'chatbot-message bot-message cv-action-message';
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'cv-download-btn';
+        button.innerHTML = '<i class="fas fa-file-arrow-down"></i> Open professional CV';
+        button.addEventListener('click', () => this.openCvWindow());
+        contentDiv.appendChild(button);
+        actionDiv.appendChild(contentDiv);
+        this.chatbox.appendChild(actionDiv);
+        this.chatbox.scrollTop = this.chatbox.scrollHeight;
+    }
+
+    openCvWindow() {
+        const cvWindow = window.open('', '_blank');
+        if (!cvWindow) return;
+        cvWindow.document.write(`<!doctype html><html><head><title>Ortiz Atsu Lodonu - CV</title><style>
+            body{font-family:Arial,sans-serif;color:#1f2937;max-width:850px;margin:40px auto;padding:0 32px;line-height:1.5}h1{margin-bottom:4px;color:#111827}h2{font-size:16px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid #2563eb;padding-bottom:5px;margin-top:24px;color:#2563eb}h3{margin:12px 0 2px;font-size:15px}.muted{color:#4b5563}.contact{font-size:13px;margin-bottom:24px}.item{margin-bottom:12px}ul{margin-top:4px}@media print{body{margin:0 auto;padding:0 12px}}
+        </style></head><body><h1>Ortiz Atsu Lodonu</h1><div class="muted">Web Developer | Aspiring Software Engineer | Graphic Designer | AI Enthusiast</div><div class="contact">Accra, Ghana &nbsp; | &nbsp; latsuortiz@gmail.com &nbsp; | &nbsp; +233 206 047 722</div>
+        <h2>Professional Profile</h2><p>Web developer building intelligent web applications and websites. Motivated and tech-driven Applied Informatics student passionate about software engineering, graphic design, and artificial intelligence, with a focus on solving real-world problems through innovative technology.</p>
+        <h2>Education</h2><div class="item"><h3>Accra Technical University</h3><div class="muted">B.Tech in Applied Informatics — Level 200</div></div><div class="item"><h3>Keta Senior High School</h3><div class="muted">General Science</div></div>
+        <h2>Experience & Leadership</h2><div class="item"><h3>Public Relations Officer</h3><div class="muted">Information Systems & Technology Students' Association — Current</div></div><div class="item"><h3>Programming Tutor</h3><div class="muted">C Programming Language — Ongoing</div></div><div class="item"><h3>Event Coordinator & Attendee Support</h3><div class="muted">AgentCon Volunteer — 2025</div></div><div class="item"><h3>Customer Service Representative</h3><div class="muted">Telecel Ghana — 2025</div></div>
+        <h2>Skills</h2><p>C, C++, HTML, CSS, JavaScript, SQL, Graphic Design, UI/UX Design, Branding, Artificial Intelligence, Problem Solving, Microsoft Office</p>
+        <h2>Professional Links</h2><p>linkedin.com/in/lodonu-atsu-ortiz-009194355 &nbsp; | &nbsp; instagram.com/ortiz.oal &nbsp; | &nbsp; x.com/Ortiz_oal</p><script>window.onload=()=>window.print();</script></body></html>`);
+        cvWindow.document.close();
     }
 }
 

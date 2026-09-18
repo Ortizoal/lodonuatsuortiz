@@ -1246,6 +1246,10 @@ body.view-education-only section[data-reveal]:not(#education) {
     border-bottom-left-radius: 4px;
 }
 
+.cv-action-message .message-content { background: transparent; padding: 0; }
+.cv-download-btn { border: 0; border-radius: 8px; padding: 10px 14px; background: #2563eb; color: #fff; cursor: pointer; font: inherit; }
+.cv-download-btn:hover { background: #1d4ed8; }
+
 .user-message {
     justify-content: flex-end;
 }
