@@ -387,7 +387,7 @@ class TranquilityChatbot {
             name: 'Ortiz',
             greetings: ['hello', 'hi', 'hey', 'greetings', 'how are you', 'what\'s up'],
             education: {
-                current: 'Accra Technical University - B.Tech in Applied Informatics (Level 200)',
+                current: 'Accra Technical University - B.Tech in Applied Informatics (Level 300)',
                 previous: 'Keta Senior High School - General Science',
                 trigger: ['education', 'school', 'university', 'degree', 'study', 'studies']
             },
@@ -401,13 +401,14 @@ class TranquilityChatbot {
                 agentcon: 'AgentCon Volunteer (2025) - Event Coordinator & Attendee Support',
                 telecel: 'Customer Service Representative (2025) - Telecel Ghana',
                 istsa: 'Public Relations Officer (Current) - Information Systems & Technology Student\'s Association',
+                vicePresident: 'Vice President (Current) - Information Systems & Technology Students Association: built relationships with other student associations, oversaw committee activities, and helped organize student-benefit programs',
                 tutor: 'Programming Tutor (Ongoing) - C Programming Language',
                 trigger: ['experience', 'work', 'job', 'position', 'role', 'volunteered', 'volunteer']
             },
             about: {
                 profession: 'Web Developer, Aspiring Software Engineer, Graphic Designer, and AI Enthusiast',
                 passion: 'Technology innovation and creating impactful solutions',
-                role: 'Public Relations Officer for Information Systems & Technology Student\'s Association',
+                role: 'Vice President of the Information Systems & Technology Students Association',
                 tutor: 'C Programming Tutor',
                 trigger: ['about', 'who', 'yourself', 'what do you do', 'profession', 'career']
             }
@@ -548,7 +549,7 @@ class TranquilityChatbot {
 
         // Experience
         if (this.knowledgeBase.experience.trigger.some(word => message.includes(word))) {
-            return `💼 Experience & Involvement:\n\n${this.knowledgeBase.experience.agentcon}\n\n${this.knowledgeBase.experience.telecel}\n\n${this.knowledgeBase.experience.istsa}\n\n${this.knowledgeBase.experience.tutor}`;
+            return `💼 Experience & Involvement:\n\n${this.knowledgeBase.experience.vicePresident}\n\n${this.knowledgeBase.experience.istsa}\n\n${this.knowledgeBase.experience.agentcon}\n\n${this.knowledgeBase.experience.telecel}\n\n${this.knowledgeBase.experience.tutor}`;
         }
 
         // About/Who
@@ -608,8 +609,8 @@ class TranquilityChatbot {
             body{font-family:Arial,sans-serif;color:#1f2937;max-width:850px;margin:40px auto;padding:0 32px;line-height:1.5}h1{margin-bottom:4px;color:#111827}h2{font-size:16px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid #2563eb;padding-bottom:5px;margin-top:24px;color:#2563eb}h3{margin:12px 0 2px;font-size:15px}.muted{color:#4b5563}.contact{font-size:13px;margin-bottom:24px}.item{margin-bottom:12px}ul{margin-top:4px}@media print{body{margin:0 auto;padding:0 12px}}
         </style></head><body><h1>Ortiz Atsu Lodonu</h1><div class="muted">Web Developer | Aspiring Software Engineer | Graphic Designer | AI Enthusiast</div><div class="contact">Accra, Ghana &nbsp; | &nbsp; latsuortiz@gmail.com &nbsp; | &nbsp; +233 206 047 722</div>
         <h2>Professional Profile</h2><p>Web developer building intelligent web applications and websites. Motivated and tech-driven Applied Informatics student passionate about software engineering, graphic design, and artificial intelligence, with a focus on solving real-world problems through innovative technology.</p>
-        <h2>Education</h2><div class="item"><h3>Accra Technical University</h3><div class="muted">B.Tech in Applied Informatics — Level 200</div></div><div class="item"><h3>Keta Senior High School</h3><div class="muted">General Science</div></div>
-        <h2>Experience & Leadership</h2><div class="item"><h3>Public Relations Officer</h3><div class="muted">Information Systems & Technology Students' Association — Current</div></div><div class="item"><h3>Programming Tutor</h3><div class="muted">C Programming Language — Ongoing</div></div><div class="item"><h3>Event Coordinator & Attendee Support</h3><div class="muted">AgentCon Volunteer — 2025</div></div><div class="item"><h3>Customer Service Representative</h3><div class="muted">Telecel Ghana — 2025</div></div>
+        <h2>Education</h2><div class="item"><h3>Accra Technical University</h3><div class="muted">B.Tech in Applied Informatics — Level 300</div></div><div class="item"><h3>Keta Senior High School</h3><div class="muted">General Science</div></div>
+        <h2>Experience & Leadership</h2><div class="item"><h3>Vice President</h3><div class="muted">Information Systems & Technology Students' Association — Current</div><ul><li>Built relationships with other student associations</li><li>Oversaw committee activities</li><li>Helped organize programs benefiting students</li></ul></div><div class="item"><h3>Public Relations Officer</h3><div class="muted">Information Systems & Technology Students' Association — Previous</div></div><div class="item"><h3>Programming Tutor</h3><div class="muted">C Programming Language — Ongoing</div></div><div class="item"><h3>Event Coordinator & Attendee Support</h3><div class="muted">AgentCon Volunteer — 2025</div></div><div class="item"><h3>Customer Service Representative</h3><div class="muted">Telecel Ghana — 2025</div></div>
         <h2>Skills</h2><p>C, C++, HTML, CSS, JavaScript, SQL, Graphic Design, UI/UX Design, Branding, Artificial Intelligence, Problem Solving, Microsoft Office</p>
         <h2>Professional Links</h2><p>linkedin.com/in/lodonu-atsu-ortiz-009194355 &nbsp; | &nbsp; instagram.com/ortiz.oal &nbsp; | &nbsp; x.com/Ortiz_oal</p><script>window.onload=()=>window.print();</script></body></html>`);
         cvWindow.document.close();

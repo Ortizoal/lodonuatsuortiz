@@ -1,0 +1,13 @@
+# Legacy page intentionally excluded from the active portfolio
+portfolio.html
+
+# Local/editor/system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
