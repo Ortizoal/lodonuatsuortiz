@@ -416,6 +416,11 @@ class TranquilityChatbot {
                 role: 'Vice President of the Information Systems & Technology Students Association',
                 tutor: 'C Programming Tutor',
                 trigger: ['about', 'who', 'yourself', 'what do you do', 'profession', 'career']
+            },
+            projects: {
+                istConnect: 'IST Connect - a student platform for academic performance tracking, AI tutoring, quizzes, notes, student forums, direct messaging, and personalized study timetables. Built with React, TypeScript, Vite, Tailwind CSS, Firebase, Gemini API, Recharts, and PWA technologies.',
+                houseOfAura: 'House of Aura - a ready-to-wear fashion brand website for women who love feminine, playful, and flattering pieces. Features include shopping, FAQs, ordering, and contact. Built with HTML, CSS, and JavaScript.',
+                trigger: ['project', 'projects', 'portfolio', 'ist connect', 'house of aura', 'houseof aura', 'app', 'website']
             }
         };
 
@@ -485,7 +490,7 @@ class TranquilityChatbot {
 
     addWelcomeMessage() {
         setTimeout(() => {
-            this.displayMessage('Welcome! I\'m Tranquility, an AI assistant here to answer questions about Ortiz. Feel free to ask about education, experience, skills, or anything else about Ortiz!', 'bot');
+            this.displayMessage('Welcome! I\'m Tranquility, an AI assistant here to answer questions about Ortiz. Ask me about his education, experience, skills, projects, leadership, contact details, or CV.', 'bot');
         }, 500);
     }
 
@@ -552,6 +557,17 @@ class TranquilityChatbot {
             return `💻 Skills & Expertise:\n\nProgramming: ${this.knowledgeBase.skills.programming.join(', ')}\n\nDesign: ${this.knowledgeBase.skills.design.join(', ')}\n\nSpecializations: ${this.knowledgeBase.skills.specializations.join(', ')}`;
         }
 
+        // Projects
+        if (this.knowledgeBase.projects.trigger.some(word => message.includes(word))) {
+            if (message.includes('ist connect') || (message.includes('student') && message.includes('app'))) {
+                return `IST Connect:\n\n${this.knowledgeBase.projects.istConnect}`;
+            }
+            if (message.includes('house') || message.includes('aura') || message.includes('fashion')) {
+                return `House of Aura:\n\n${this.knowledgeBase.projects.houseOfAura}`;
+            }
+            return `Projects:\n\n${this.knowledgeBase.projects.istConnect}\n\n${this.knowledgeBase.projects.houseOfAura}`;
+        }
+
         // Experience
         if (this.knowledgeBase.experience.trigger.some(word => message.includes(word))) {
             return `💼 Experience & Involvement:\n\n${this.knowledgeBase.experience.vicePresident}\n\n${this.knowledgeBase.experience.istsa}\n\n${this.knowledgeBase.experience.agentcon}\n\n${this.knowledgeBase.experience.telecel}\n\n${this.knowledgeBase.experience.tutor}`;
@@ -563,7 +579,7 @@ class TranquilityChatbot {
         }
 
         // Contact info
-        if (message.includes('contact') || message.includes('email') || message.includes('phone')) {
+        if (message.includes('contact') || message.includes('email') || message.includes('phone') || message.includes('whatsapp') || message.includes('message')) {
             return '📧 Contact Information:\n\nEmail: latsuortiz@gmail.com\nPhone: +233 206 047 722\nWhatsApp: https://wa.me/233538954111\nLocation: Accra, Ghana\n\nYou can also find Ortiz on LinkedIn and Instagram!';
         }
 
