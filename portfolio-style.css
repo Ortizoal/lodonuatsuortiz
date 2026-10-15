@@ -832,6 +832,10 @@ body.view-projects-only section[data-reveal]:not(#projects) {
     color: #000000;
 }
 
+.social-icon.whatsapp {
+    color: #25d366;
+}
+
 .social-icon:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
