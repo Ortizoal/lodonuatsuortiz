@@ -49,7 +49,8 @@ function setView(viewClass, targetId = null) {
         'view-about-only',
         'view-skills-only',
         'view-experience-only',
-        'view-education-only'
+        'view-education-only',
+        'view-projects-only'
     ];
 
     document.body.classList.remove(...views);
@@ -87,6 +88,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
         if (targetId === 'education') {
             setView('view-education-only', 'education');
+            return;
+        }
+        if (targetId === 'projects') {
+            setView('view-projects-only', 'projects');
             return;
         }
         if (targetId === 'contact') {

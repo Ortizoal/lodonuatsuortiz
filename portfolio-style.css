@@ -304,6 +304,10 @@ body.view-education-only section[data-reveal]:not(#education) {
     display: none;
 }
 
+body.view-projects-only section[data-reveal]:not(#projects) {
+    display: none;
+}
+
 .section-title {
     font-size: 2.5rem;
     text-align: center;
@@ -323,6 +327,131 @@ body.view-education-only section[data-reveal]:not(#education) {
     height: 4px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 2px;
+}
+
+/* Projects Section */
+.projects {
+    background: var(--background-light);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 850px);
+    justify-content: center;
+}
+
+.project-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-image {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    background: #eef5ff;
+}
+
+.project-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.project-title-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: white;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.project-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.project-status {
+    color: var(--primary-color);
+    background: var(--primary-light);
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+.project-card h4 {
+    color: var(--text-dark);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.project-description,
+.project-note {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.project-features,
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+}
+
+.project-features span,
+.project-tech span {
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-features span {
+    color: var(--primary-color);
+    background: var(--primary-light);
+}
+
+.project-tech span {
+    color: var(--text-dark);
+    background: #eef2f7;
+}
+
+.project-note {
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
 }
 
 /* About Section */
@@ -1292,5 +1421,75 @@ body.view-education-only section[data-reveal]:not(#education) {
     .chatbot-send {
         width: 44px;
         height: 44px;
+    }
+}
+
+/* Mobile project layout */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .project-card-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .project-title-group {
+        gap: 0.75rem;
+    }
+
+    .project-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .project-image {
+        max-height: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card-header {
+        gap: 0.75rem;
+    }
+
+    .project-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    .project-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .project-status {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.65rem;
+    }
+
+    .project-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .project-description,
+    .project-note {
+        font-size: 0.95rem;
+    }
+
+    .project-features,
+    .project-tech {
+        gap: 0.45rem;
+    }
+
+    .project-features span,
+    .project-tech span {
+        font-size: 0.78rem;
+        padding: 0.4rem 0.6rem;
     }
 }
